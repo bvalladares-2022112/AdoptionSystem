@@ -1,5 +1,7 @@
 import mongoose from "mongoose";
 
+const { Schema } = mongoose
+
 const animalSchema = mongoose.Schema({
     name: {
         type: String,
@@ -18,11 +20,13 @@ const animalSchema = mongoose.Schema({
         required: true
     },
     keeper: {
-        type: Schema.ObjectId,
+        type: Schema.Types.ObjectId,
         ref: 'user',
         required: true
     }
 });
+
+const animal = mongoose.model('Animal', animalSchema);
 
 export default mongoose.model('animal', animalSchema);
 
